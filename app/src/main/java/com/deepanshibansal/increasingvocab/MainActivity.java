@@ -89,11 +89,15 @@ EditText word_editText, meaning_editText;
 list=countries;
 meaning=cities;
 
+int color1=getResources().getColor(R.color.specialblack);
+ int color2=getResources().getColor(R.color.specialwhite);
+
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new words(list,meaning);
+        mAdapter = new words(list,meaning,color1,color2);
         recyclerView.setAdapter(mAdapter);
     }
 

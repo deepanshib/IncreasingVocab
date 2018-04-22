@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,9 +18,13 @@ public class words extends RecyclerView.Adapter<words.ViewHolder>{
     List<String> word = new ArrayList<>();
     List<String> meaning = new ArrayList<>();
 LayoutInflater inflater;
-    public words(List<String> w,List<String> m) {
+int colorblack;
+int colorwhite;
+    public words(List<String> w,List<String> m,int color1,int color2) {
         word=w;
         meaning=m;
+        colorblack=color1;
+        colorwhite=color2;
     }
 
     @Override
@@ -36,7 +41,13 @@ LayoutInflater inflater;
 
         holder.wordtext.setText(word.get(position));
         holder.meaningtext.setText(meaning.get(position));
-
+//if(position%2!=0) {
+//    holder.ll.setBackgroundColor(colorblack);
+//}
+//else {
+//    holder.ll.setBackgroundColor(colorwhite);
+//    holder.wordtext.setTextColor(colorblack);
+//}
     }
 
     @Override
@@ -48,12 +59,15 @@ LayoutInflater inflater;
         public TextView wordtext;
         public TextView meaningtext;
         public View layout;
+        public LinearLayout ll;
 
         public ViewHolder(View v) {
             super(v);
             layout = v;
            wordtext = (TextView) v.findViewById(R.id.rvword);
-           meaningtext = (TextView) v.findViewById(R.id.rvmeaning);
+            ll = (LinearLayout) v.findViewById(R.id.ll);
+
+            meaningtext = (TextView) v.findViewById(R.id.rvmeaning);
 
         }
     }
